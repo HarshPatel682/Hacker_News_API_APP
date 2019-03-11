@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyviewHolder> {
+    private static final String TAG = "NewsAdapter";
+
+
     private ArrayList<Article> list;
     private Context context;
 
@@ -41,6 +45,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyviewHolder> 
             @Override
             public void onClick(View v) {
                 String url=list.get(position).Url;
+                Log.d(TAG, "User Clicked On: " + url + "!");
+
                 WebView wv = new WebView(context);
                 wv.loadUrl(url);
                 AlertDialog.Builder alert = new AlertDialog.Builder(context);

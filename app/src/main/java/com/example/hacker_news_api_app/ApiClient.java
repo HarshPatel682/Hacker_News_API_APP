@@ -9,6 +9,11 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/*
+* This actually connects us to the Hacker News API
+* and we use retrofit to read the response given by the HTTP request
+* */
+
 public class ApiClient {
 
     public static final String Base_URL="https://hacker-news.firebaseio.com/";

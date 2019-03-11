@@ -4,6 +4,10 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/*
+* This is store the values received from the HTTP request that the api client and interface will make
+* I access the title and Url as of now (but I need to access the "kids" so that I can display the comments)
+* */
 public class Article_Response {
 
     @SerializedName("id")

@@ -6,6 +6,8 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
+/*Used to add on the connection url found in Api Client
+* gets the top stories, the specific articles*/
 public interface ApiInterface {
     @GET("v0/topstories.json?print=pretty")
     Call<List<Integer>> getTopStories();
