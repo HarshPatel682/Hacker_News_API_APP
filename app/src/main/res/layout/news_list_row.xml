@@ -15,8 +15,35 @@
         android:layout_width="match_parent"
         android:layout_height="2dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <!--<ImageButton-->
+        <ImageButton
+            android:id="@+id/favorites_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="click to add to favorites"
+            app:srcCompat="@android:drawable/btn_star_big_off"
+            android:background="@android:drawable/screen_background_light_transparent"/>
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:text="HOLDER"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+        <!--<ImageButton-->
         <!--android:id="@+id/favorites_button"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
@@ -24,17 +51,16 @@
         <!--android:contentDescription="click to add to favorites"-->
         <!--app:srcCompat="@android:drawable/btn_star_big_off" />-->
 
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
-        android:text="HOLDER"
-        android:textColor="#ffffff"
-        android:textSize="20sp" />
-
+        <!--<TextView-->
+        <!--android:id="@+id/textview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_margin="16dp"-->
+        <!--android:fontFamily="sans-serif-condensed"-->
+        <!--android:gravity="center"-->
+        <!--android:text="HOLDER"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:textSize="20sp" />-->
 
 </LinearLayout>

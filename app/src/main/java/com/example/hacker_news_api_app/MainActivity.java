@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static boolean mode; // false if temp web page, true if new intent with comments
+    public static boolean mode; // true if temp web page, false if new intent with comments
     public static ArrayList<Article> favorites_list;
 
 
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private ImageButton fav_button;
+
+    boolean onFav;
 
     ArrayList<Article> list;
 
@@ -43,10 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "OnCreate: started");
 
-        mode = false;
+        onFav = false;
+        mode = true;
         list = new ArrayList<>();
         favorites_list = new ArrayList<>();
-//        fav_button = (ImageButton) findViewById(R.id.favorites_button);
+        fav_button = (ImageButton) findViewById(R.id.favorites_button);
 
         // this is setting up the recycler view and giving it a reference so that we may change the contents of it later
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
@@ -78,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
                                 assert response.body() != null;
                                 assert response.body().getTitle() != null;
                                 assert response.body().getUrl() != null;
-                                if (response.body().getUrl() != null && response.body().getTitle() != null) {
+                                if (response.body().getUrl() != null && response.body().getTitle() != null && response.body().getKids() != null) {
                                     String title = response.body().getTitle().toString();
                                     String url = response.body().getUrl().toString();
-//                                    List<Integer> kids = response.body().getKids();
-                                    list.add(new Article(title, url));
+                                    List<Integer> kids = response.body().getKids();
+                                    list.add(new Article(title, url, kids));
                                     NewsAdapter adapter = new NewsAdapter(list);
                                     recyclerView.setAdapter(adapter);
                                     recyclerView.addItemDecoration(dividerItemDecorationn);
@@ -107,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "NULL POINTER EXCEPTION OCCURRED");
         }
 
+
     }
 
     @Override
@@ -118,12 +122,38 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-//        int id = item.getItemId();
-//        if (id == R.id.change_mode) {
-//            mode = !mode;
-//            Log.d(TAG, "THE MODE HAD CHANGED TO: " + mode);
-//            Toast.makeText(getApplicationContext(), "Clicked on Change_mode: mode is " + mode, Toast.LENGTH_LONG).show();
-//        }
+        int id = item.getItemId();
+        if (id == R.id.change_mode) {
+            mode = !mode;
+            Log.d(TAG, "THE MODE HAD CHANGED TO: " + mode);
+            Toast.makeText(getApplicationContext(), "SHOW TEMP Webpage?: mode is " + mode, Toast.LENGTH_LONG).show();
+            if (item.getIcon().getConstantState() == getResources().getDrawable(android.R.drawable.checkbox_off_background).getConstantState()) {
+                item.setIcon(android.R.drawable.checkbox_on_background);
+            } else {
+                item.setIcon(android.R.drawable.checkbox_off_background);
+            }
+        } else if (id == R.id.favorites) {
+            Log.d(TAG, "FAVORITES HAS BEEN CLICKED");
+            if (!onFav) {
+                final DividerItemDecoration dividerItemDecorationn = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+                dividerItemDecorationn.setDrawable(getResources().getDrawable(R.drawable.divider));
+                setTitle("FAVORITES SECTION");
+                NewsAdapter adapter = new NewsAdapter(favorites_list);
+                recyclerView.setAdapter(adapter);
+                recyclerView.addItemDecoration(dividerItemDecorationn);
+                adapter.notifyDataSetChanged();
+                onFav = true;
+            } else {
+                setTitle("Hacker_News_API_APP");
+                final DividerItemDecoration dividerItemDecorationn = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+                dividerItemDecorationn.setDrawable(getResources().getDrawable(R.drawable.divider));
+                NewsAdapter adapter = new NewsAdapter(list);
+                recyclerView.setAdapter(adapter);
+                recyclerView.addItemDecoration(dividerItemDecorationn);
+                adapter.notifyDataSetChanged();
+                onFav = false;
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
 }

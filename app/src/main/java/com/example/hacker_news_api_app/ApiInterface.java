@@ -13,4 +13,6 @@ public interface ApiInterface {
     Call<List<Integer>> getTopStories();
     @GET("v0/item/{articleid}.json?print=pretty")
     Call<Article_Response> getArticle(@Path("articleid") int id);
+    @GET("v0/item/{commentid}.json?print=pretty")
+    Call<Article_Response> getComment(@Path("commentid") int id);
 }

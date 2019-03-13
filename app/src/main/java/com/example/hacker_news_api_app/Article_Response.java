@@ -47,6 +47,11 @@ public class Article_Response {
     @Expose
     private Integer descendants;
 
+
+    @SerializedName("text")
+    @Expose
+    private String text = "holder";
+
     public Integer getId() {
         return id;
     }
@@ -143,4 +148,11 @@ public class Article_Response {
         this.descendants = descendants;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 }
