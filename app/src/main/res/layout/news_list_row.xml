@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingRight="10dp"
-    android:paddingLeft="10dp"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp"
     android:background="@color/colorPrimary"
-    android:weightSum="100"
-    >
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="5dp"
+    android:weightSum="100">
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="2dp" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textview"
-            android:layout_margin="16dp"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:text="HOLDER"
-            android:fontFamily="sans-serif-condensed"
-            android:layout_gravity="center"
-            android:textSize="20sp"/>
+    <!--<ImageButton-->
+        <!--android:id="@+id/favorites_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:contentDescription="click to add to favorites"-->
+        <!--app:srcCompat="@android:drawable/btn_star_big_off" />-->
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="HOLDER"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
 
 
 </LinearLayout>
