@@ -58,7 +58,7 @@ public class CommentDisplay extends AppCompatActivity {
 
 
         // this is setting up the recycler view and giving it a reference so that we may change the contents of it later
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_Comment);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);

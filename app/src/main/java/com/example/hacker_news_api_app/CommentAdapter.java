@@ -42,6 +42,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyviewHo
 
         //this will show a temp web page
         holder.title.setText(list.get(position).Title);
+        holder.title.setTextSize(20);
+        holder.title.setTextColor(context.getResources().getColor(android.R.color.white));
 //        holder.title.setOnClickListener(new View.OnClickListener() {
 //
 //            @Override
